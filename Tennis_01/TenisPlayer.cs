@@ -12,6 +12,7 @@ namespace Tennis_01
         private int score;
         private bool gameService;
 
+        // constructors
         public TenisPlayer()
         {
             playerName = "";
@@ -21,5 +22,6 @@ namespace Tennis_01
         {
             playerName = name;
         }
+        //------------------------------------
     }
 }
