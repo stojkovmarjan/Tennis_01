@@ -9,16 +9,16 @@ namespace Tennis_01
     class TenisPlayer
     {
         private string playerName;
-        private int score;
-       // private bool gameService;
-
-        // constructors
+        
         public TenisPlayer(string name)
         {
-            playerName = name;
-            score = 0;
+            PlayerName = name;
+            Score = 0;
         }
         //------------------------------------
-        //public bool GameService { get; set; }
+        public string PlayerName { get; private set; }
+        public int Score { get; set; }
+        public bool Service { get; set; }
+        
     }
 }
