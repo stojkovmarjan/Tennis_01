@@ -8,25 +8,46 @@ namespace Tennis_01
 {
     class TenisGame
     {
-        private TenisPlayer tenisPlayer1;
-        private TenisPlayer tenisPlayer2;
+        //possible play outcoms
+        private const int ball_returned = 0;
+        private const int ball_point = 1;
+        private const int ball_out = 2;
+        private const int ball_net = 3;
+        private const int ball_let = 4;
+        //----------------------------------
 
-        // constructors
-        public TenisGame()
+        private TenisPlayer TenisPlayer1;
+        private TenisPlayer TenisPlayer2;
+        //private int Game;
+        private int Set;
+        private int PlayCounter;
+        private Random rnd = new Random();
+     
+
+        public void StartGame()
         {
-            tenisPlayer1 = new TenisPlayer("Player1");
-            tenisPlayer2 = new TenisPlayer("Player2");
+            //game starts with player 1 service
+            PlayCounter = 0;
         }
-        public TenisGame(string player1Name, string player2Name)
+
+        /*
+        int GetPlayOutcome()
         {
-            tenisPlayer1 = new TenisPlayer(player1Name);
-            tenisPlayer2 = new TenisPlayer(player2Name);
+            //int outcom = 0;
+
+            int randomOutcom = rnd.Next(100);
+
+            switch (randomOutcom)
+            {
+                case (0): outcom = 0; break;
+            }
+
+            return 0;// outcome;
         }
-        public TenisGame(TenisPlayer player1,TenisPlayer player2)
-        {
-            tenisPlayer1 = player1;
-            tenisPlayer2 = player2;
-        }
-        //----------------------------------------------------------
+        */
+
     }
+
+   
+
 }

@@ -8,14 +8,6 @@ namespace Tennis_01
 {
     class TenisPlayer
     {
-        private string playerName;
-        
-        public TenisPlayer(string name)
-        {
-            PlayerName = name;
-            Score = 0;
-        }
-        //------------------------------------
         public string PlayerName { get; private set; }
         public int Score { get; set; }
         public bool Service { get; set; }
