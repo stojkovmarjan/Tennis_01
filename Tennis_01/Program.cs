@@ -10,6 +10,17 @@ namespace Tennis_01
     {
         static void Main(string[] args)
         {
+            string again = "y";
+            
+            while (again.Equals("y"))
+            {
+                TennisMatch.Play();
+
+                Console.Write("Again (y/n)? ");
+                again = Console.ReadLine();
+                again = again.ToLower();
+            }
+           
         }
     }
 }
