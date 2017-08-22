@@ -14,7 +14,8 @@ namespace Tennis_01
         }
         
         public int PointsWon { get; set; }
-   //rytryrtyrty
+        public bool IsServing { get; set; }
+   
 
         public override string ToString()
         {

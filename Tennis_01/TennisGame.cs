@@ -6,14 +6,27 @@ using System.Threading.Tasks;
 
 namespace Tennis_01
 {
-    static class TennisGame
+    class TennisGame
     {
-        private static TennisPlayer TennisPlayer1;
-        private static TennisPlayer TennisPlayer2;
-        private static Random rnd = new Random();
+        private TennisPlayer TennisPlayer1;
+        private TennisPlayer TennisPlayer2;
+        private Random rnd = new Random();
      
+        public TennisGame(string player1Name,string player2Name)
+        {
+            TennisPlayer1 = new TennisPlayer(player1Name);
+            TennisPlayer1.IsServing = true;
+            TennisPlayer2 = new TennisPlayer(player2Name);
+            TennisPlayer2.IsServing = false;
+        }
 
-        public static void Play()
+        public TennisGame (TennisPlayer player1,TennisPlayer player2)
+        {
+            TennisPlayer1 = player1;
+            TennisPlayer2 = player2;
+        }
+
+        public void Play()
         {
             TennisPlayer1 = new TennisPlayer("Player 1");
             TennisPlayer2 = new TennisPlayer("Player 2");
@@ -21,7 +34,7 @@ namespace Tennis_01
             RandomPoint();
         }
         //public static TennisPlayer TennisPlayer1 { get; set; }
-        private static void RandomPoint()
+        private  void RandomPoint()
         {
             int randomPoint = rnd.Next(100);
 
@@ -37,7 +50,7 @@ namespace Tennis_01
             Announce();
         }
 
-        private static void Announce()
+        private  void Announce()
         {           
 
             if ((TennisPlayer1.PointsWon >= 4) && ((TennisPlayer1.PointsWon - TennisPlayer2.PointsWon) >= 2))
@@ -61,7 +74,7 @@ namespace Tennis_01
 
         }
 
-        private static string Score()
+        private string Score()
         {
             string score = "";
 
