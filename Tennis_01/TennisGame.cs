@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 
 namespace Tennis_01
 {
-    static class TennisGame
+    class TennisGame
     {
         private static TennisPlayer TennisPlayer1;
         private static TennisPlayer TennisPlayer2;
         private static Random rnd = new Random();
      
+        public TennisGame (TennisPlayer playerserver,TennisPlayer playerreceiver)
+        {
 
+        }
         public static void Play()
         {
             TennisPlayer1 = new TennisPlayer("Player 1");
             TennisPlayer2 = new TennisPlayer("Player 2");
-            Console.WriteLine("\n\nPlayer 1 serve\nLOVE ALL\n================================");
+            Console.WriteLine("\n\nPlayer 1 service\n\t\tLOVE ALL\n================================");
             RandomPoint();
         }
         //public static TennisPlayer TennisPlayer1 { get; set; }
@@ -43,17 +46,17 @@ namespace Tennis_01
             if ((TennisPlayer1.PointsWon >= 4) && ((TennisPlayer1.PointsWon - TennisPlayer2.PointsWon) >= 2))
             {
                 //Player 1 won the game
-                Console.WriteLine("\nWin for Player 1\n================================\n\n");
+                Console.WriteLine("\n\t\tWin for Player 1\n================================\n\n");
             }
             else if ((TennisPlayer2.PointsWon >= 4) && ((TennisPlayer2.PointsWon - TennisPlayer1.PointsWon) >= 2))
             {
                 //Player 2 won the game
-                Console.WriteLine("\nWin for Player 2\n================================\n\n");
+                Console.WriteLine("\n\t\tWin for Player 2\n================================\n\n");
             }
             else
             {
                // Console.WriteLine("{0}:{1}", TennisPlayer1.PointsWon.ToString(),TennisPlayer2.PointsWon.ToString());
-                Console.WriteLine(Score());
+                Console.WriteLine("\t\t{0}",Score());
                 Console.WriteLine("-------------------------------------------");
                 RandomPoint();
             }
