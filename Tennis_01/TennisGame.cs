@@ -6,16 +6,13 @@ using System.Threading.Tasks;
 
 namespace Tennis_01
 {
-    class TennisGame
+    static class TennisGame
     {
         private static TennisPlayer TennisPlayer1;
         private static TennisPlayer TennisPlayer2;
         private static Random rnd = new Random();
      
-        public TennisGame (TennisPlayer playerserver,TennisPlayer playerreceiver)
-        {
-
-        }
+        
         public static void Play()
         {
             TennisPlayer1 = new TennisPlayer("Player 1");
@@ -37,10 +34,10 @@ namespace Tennis_01
                 TennisPlayer2.PointsWon++;
             }
 
-            Announce();
+            CallScore();
         }
 
-        private static void Announce()
+        private static void CallScore()
         {           
 
             if ((TennisPlayer1.PointsWon >= 4) && ((TennisPlayer1.PointsWon - TennisPlayer2.PointsWon) >= 2))
@@ -56,7 +53,7 @@ namespace Tennis_01
             else
             {
                // Console.WriteLine("{0}:{1}", TennisPlayer1.PointsWon.ToString(),TennisPlayer2.PointsWon.ToString());
-                Console.WriteLine("\t\t{0}",Score());
+                Console.WriteLine("\t\t{0}",Score(TennisPlayer1,TennisPlayer2));
                 Console.WriteLine("-------------------------------------------");
                 RandomPoint();
             }
@@ -64,26 +61,26 @@ namespace Tennis_01
 
         }
 
-        private static string Score()
+        private static string Score(TennisPlayer server, TennisPlayer receiver)
         {
             string score = "";
 
-            if ((TennisPlayer1.PointsWon == TennisPlayer2.PointsWon) && (TennisPlayer2.PointsWon < 3))
+            if ((server.PointsWon == receiver.PointsWon) && (server.PointsWon < 3))
             {
-                score = TennisPlayer1.ToString() + "-All";
+                score = server.ToString() + "-All";
             }
             // else if ((TennisPlayer1.ToString().Equals(TennisPlayer2.ToString())) && (TennisPlayer1.PointsWon >= 3))
-            else if ((TennisPlayer1.PointsWon==TennisPlayer2.PointsWon) && (TennisPlayer1.PointsWon >= 3))
+            else if ((server.PointsWon== receiver.PointsWon) && (server.PointsWon >= 3))
             {
                 score = "Deuce";
             }
-            else if ((TennisPlayer1.PointsWon - TennisPlayer2.PointsWon == 1) && (TennisPlayer1.PointsWon >= 4))
+            else if ((server.PointsWon - receiver.PointsWon == 1) && (server.PointsWon >= 4))
             {
-                score = "Advantage Player 1";
+                score = "Advantage "+server.Name;
             }
-            else if ((TennisPlayer2.PointsWon - TennisPlayer1.PointsWon == 1) && (TennisPlayer2.PointsWon >= 4))
+            else if ((receiver.PointsWon - server.PointsWon == 1) && (receiver.PointsWon >= 4))
             {
-                score = "Advantage Player 2";
+                score = "Advantage "+receiver.Name;
             }
             else
             {
