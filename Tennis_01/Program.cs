@@ -14,7 +14,7 @@ namespace Tennis_01
             
             while (again.Equals("y"))
             {
-                TennisMatch.Play();
+                TennisGame.Play();
 
                 Console.Write("Again (y/n)? ");
                 again = Console.ReadLine();

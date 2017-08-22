@@ -6,21 +6,10 @@ using System.Threading.Tasks;
 
 namespace Tennis_01
 {
-    static class TennisMatch
+    static class TennisGame
     {
-        /*possible play outcoms
-        private const int ball_returned = 0;
-        private const int ball_point = 1;
-        private const int ball_out = 2;
-        private const int ball_net = 3;
-        private const int ball_let = 4;
-        */
-
         private static TennisPlayer TennisPlayer1;
         private static TennisPlayer TennisPlayer2;
-        //private static int Game;
-        //private static int Set;
-        //private static int PlayCounter;
         private static Random rnd = new Random();
      
 
@@ -28,19 +17,10 @@ namespace Tennis_01
         {
             TennisPlayer1 = new TennisPlayer("Player 1");
             TennisPlayer2 = new TennisPlayer("Player 2");
-            //TennisPlayer1.Service = true;
-            Console.WriteLine("\n\nPlayer 1 serve\nLOVE ALL");
+            Console.WriteLine("\n\nPlayer 1 serve\nLOVE ALL\n================================");
             RandomPoint();
         }
-
-        public static void Play(string player1name, string player2name)
-        {
-            TennisPlayer1 = new TennisPlayer(player1name);
-            TennisPlayer2 = new TennisPlayer(player2name);
-            Console.WriteLine("\n\nPlayer 1 serve\nLOVE ALL");
-            RandomPoint();
-        }
-
+        //public static TennisPlayer TennisPlayer1 { get; set; }
         private static void RandomPoint()
         {
             int randomPoint = rnd.Next(100);
@@ -63,15 +43,16 @@ namespace Tennis_01
             if ((TennisPlayer1.PointsWon >= 4) && ((TennisPlayer1.PointsWon - TennisPlayer2.PointsWon) >= 2))
             {
                 //Player 1 won the game
-                Console.WriteLine("\nPlayer 1 won the game\n================================\n\n");
+                Console.WriteLine("\nWin for Player 1\n================================\n\n");
             }
             else if ((TennisPlayer2.PointsWon >= 4) && ((TennisPlayer2.PointsWon - TennisPlayer1.PointsWon) >= 2))
             {
-                Console.WriteLine("\nPlayer 2 won the game\n================================\n\n");
+                //Player 2 won the game
+                Console.WriteLine("\nWin for Player 2\n================================\n\n");
             }
             else
             {
-                Console.WriteLine("{0}:{1}", TennisPlayer1.PointsWon.ToString(),TennisPlayer2.PointsWon.ToString());
+               // Console.WriteLine("{0}:{1}", TennisPlayer1.PointsWon.ToString(),TennisPlayer2.PointsWon.ToString());
                 Console.WriteLine(Score());
                 Console.WriteLine("-------------------------------------------");
                 RandomPoint();
@@ -84,32 +65,30 @@ namespace Tennis_01
         {
             string score = "";
 
-            if ((TennisPlayer1.ToString().Equals(TennisPlayer2.ToString())) && (TennisPlayer2.PointsWon < 3))
+            if ((TennisPlayer1.PointsWon == TennisPlayer2.PointsWon) && (TennisPlayer2.PointsWon < 3))
             {
-                score = TennisPlayer1.ToString() + " ALL";
+                score = TennisPlayer1.ToString() + "-All";
             }
             // else if ((TennisPlayer1.ToString().Equals(TennisPlayer2.ToString())) && (TennisPlayer1.PointsWon >= 3))
             else if ((TennisPlayer1.PointsWon==TennisPlayer2.PointsWon) && (TennisPlayer1.PointsWon >= 3))
             {
-                score = "DUCE";
+                score = "Deuce";
             }
             else if ((TennisPlayer1.PointsWon - TennisPlayer2.PointsWon == 1) && (TennisPlayer1.PointsWon >= 4))
             {
-                score = "Advantage In";
+                score = "Advantage Player 1";
             }
             else if ((TennisPlayer2.PointsWon - TennisPlayer1.PointsWon == 1) && (TennisPlayer2.PointsWon >= 4))
             {
-                score = "Advantage Out";
+                score = "Advantage Player 2";
             }
             else
             {
-                score = TennisPlayer1.ToString() + ":" + TennisPlayer2.ToString();
+                score = TennisPlayer1.ToString() + "-" + TennisPlayer2.ToString();
             }
 
             return score;
-        }
-
-        
+        }  
     }
 
    
